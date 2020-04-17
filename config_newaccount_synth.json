@@ -1,0 +1,40 @@
+[{  
+    "n_samples"         : 20000,
+    "n_categories"      : 3000,
+    "n_classes"         : 2,
+    "flip_y"            : 0.0001,
+    "class_sep"         : 2,
+    "weights"           : [0.95, 0.05], 
+    "pct_missing"       : 0.0,
+    "input_path"        : "./", 
+    "output_path"       : "./data/",
+    "s3_upload"         : "False" ,
+    "s3_bucket"         : "afd-sample-bucket",
+    "s3_path"           : "detector_1",
+    "output_file"       : "sample_synth_20k",
+    "target_feature"    : "is_fraud",
+    "predict_baseline"  : "True",
+    "identity_features" : {
+        "event_timestamp"   : "str(fake.date_time_between(start_date='-1y', end_date='now', tzinfo=None))",
+        "transaction_id"    : "fake.random_number(digits=10, fix_len=True)",
+        "customer_name"     : "fake.name()",
+        "billing_name"      : "fake.name()",
+        "billing_address"   : "safe_address1()",
+        "billing_state"     : "fake.state_abbr(include_territories=False)",
+        "billing_postal"    : "fake.postcode_in_state(state_abbr='FL')",
+        "shipping_address"  : "safe_address1()",
+        "shipping_state"     : "fake.state_abbr(include_territories=False)",
+        "shipping_postal"    : "fake.postcode_in_state(state_abbr='FL')",
+        "phone_number"      : "safe_phone()",
+        "payment_instrument": "fake.credit_card_provider()",
+        "email_address"     : "'synth_'+fake.free_email()",
+        "user_agent"        : "fake.user_agent()"
+    },
+    "categorical_features"  : {
+        "ip_address"        : "fake.ipv4(network=False, address_class=None, private=None)",
+        "avs_code"          : "fake.random_uppercase_letter()"
+    },
+    "numeric_features" : {
+        "order_amt" : [10,10000]
+    }
+}]
